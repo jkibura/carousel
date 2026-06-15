@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pri-color: rgb(6, 6, 46);
+    --sec-color: rgb(111, 107, 107);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--pri-color);
+}
+
+.carousel {
+    display: flex;
+    overflow: auto;
+    gap: 1em;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    anchor-name: --carousel;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel::scroll-button(right), .carousel::scroll-button(left) {
+    content: '→'; 
+    height: 2em;
+    width: 2em;
+    background-color: var(--pri-color); 
+    border-radius: 50%;
+    color: white;
+    font: bold;
+    padding: .1em;
+    position: fixed;
+    position-anchor: --carousel;
+    position-area: right center;
+    cursor: pointer;
+}
+
+.carousel::scroll-button(left) {
+    content: '←';
+    position-area: left center;
+}
+
+.carousel::scroll-button(right):disabled, .carousel::scroll-button(left):disabled {
+    opacity: 0.75;
+    cursor: auto;
+}
+
+.card {
+    height: 12em;
+    flex: 0 0 20em;
+    background-color: var(--sec-color);
+    border-radius: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+}
